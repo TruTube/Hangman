@@ -1,7 +1,7 @@
 #include <iostream>
 bool wordcheck;
 
-}
+
 int main() {
   char word[] = {'c', 'o', 'd', 'e'};
   //^enter word here^//
