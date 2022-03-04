@@ -3,7 +3,8 @@ bool wordcheck;
 
 
 int main() {
-  char word[] = {'e', 'x', 'a', 'm', 'p', 'l', 'e'};
+  char word[] = {'e', 'x', 'a', 'm', 
+'p', 'l', 'e'};
   //^enter word here^//
   int charsize = sizeof(char);//Checking size of character in OS
   int wordsize = sizeof(word);//Checking size of word
@@ -11,6 +12,7 @@ int main() {
   std::cout << "There are " << numofletters << " letters" << std::endl;//Displaying number of letters
   
   int bodyparts = 6;
+  int guesses = 0;
   int incorrectguesses = 0;
   int correctguesses = 0;
   bool wordguessed = false;
@@ -21,7 +23,7 @@ int main() {
   char incorrectletterguess[bodyparts];
   //^Almost all variables being set
   
-  for(int guesses = 0; incorrectguesses < bodyparts && wordguessed == false; guesses++){
+  for(int forguesses = 0; incorrectguesses < bodyparts && wordguessed == false; forguesses++){
     correctguessmade = false;
     letterused = false;
     if (incorrectguessmade == true){
@@ -67,27 +69,22 @@ int main() {
       }
       }
     }
-      
-    else{
-      if(wordguessed == true){
-        std::cout << "You correctly guessed the word" << std::endl;
-        std::cout << "The word was ";
-        for(int letterdisplayed = 0; letterdisplayed < numofletters; letterdisplayed++){
-          std::cout << word[letterdisplayed];
-        }
-        std::cout << std::endl << "You took " << 1 + guesses << " tries to guess the word";
-        wordguessed = true;
-        }
-      else{
-        if( incorrectguesses >= bodyparts){
-          std::cout << "You failed to guess the word" << std::endl;
-          std::cout << "The word was ";
-          for(int letterdisplayed = 0; letterdisplayed < numofletters; letterdisplayed++){
-            std::cout << word[letterdisplayed];
-          }
-        }
-        return 0;
-      }
+    guesses = forguesses;
+  }
+  if(wordguessed == true){
+    std::cout << "You correctly guessed the word" <<   std::endl;
+    std::cout << "The word was ";
+    for(int letterdisplayed = 0; letterdisplayed < numofletters; letterdisplayed++){//looping to display every letter in word
+      std::cout << word[letterdisplayed];
     }
+    std::cout << std::endl << "You took " << 1 + guesses << " tries to guess the word";
   }
-  }
+  if( incorrectguesses >= bodyparts){
+    std::cout << "You failed to guess the word" << std::endl;
+    std::cout << "The word was ";
+    for(int letterdisplayed = 0; letterdisplayed < numofletters; letterdisplayed++){//looping to display each letter in word
+      std::cout << word[letterdisplayed];
+    }
+    }
+        return 0;
+}
